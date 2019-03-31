@@ -1,0 +1,23 @@
+{
+    "title": "input-01",
+    "testsuite": [
+        {
+            "url": "https://kakaku.com/",
+            "testcase": [
+                {
+                    "selector": "#main_search_button",
+                    "input": [
+                        {
+                            "selector": "#query",
+                            "value": "surface"
+                        }
+                    ],
+                    "click": {
+                        "selector": "title",
+                        "expect": "surfaceの通販・価格比較 - 価格.com"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "title": "meta-01",
+    "testsuite": [
+        {
+            "url": "https://kakaku.com/",
+            "meta": [
+                {
+                    "name": "keywords",
+                    "expect": "価格.com,価格,比較,値段,クチコミ,評価,ショッピング"
+                },
+                {
+                    "name": "robots",
+                    "expect": "index,follow"
+                }
+            ]
+        }
+    ]
+}
