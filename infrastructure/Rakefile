@@ -1,0 +1,31 @@
+def force_sh(cmd)
+  begin
+    sh cmd
+  rescue => e
+    puts e.message
+  end
+end
+
+desc "mockサーバ起動"
+task :run_account_mock do
+  cmd = <<-EOS
+    docker-compose build
+    docker-compose down
+    docker-compose up -d
+  EOS
+  sh cmd
+end
+
+desc "不要イメージ一括削除"
+task :prune do
+  force_sh 'docker volume prune -f > /dev/null 2>&1'
+  force_sh 'docker rmi -f $(docker images -f "dangling=true" -q) > /dev/null 2>&1'
+end
+
+desc "dockerネットワーク作成"
+task :create_network do
+  force_sh 'docker network create --driver bridge jsonlenium-test-server'
+end
+
+desc "タスク一括実行"
+task :default => [:create_network, :run_account_mock, :prune]

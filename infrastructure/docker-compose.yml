@@ -1,0 +1,16 @@
+version: '3'
+services:
+  jsonlenium-test-get-server:
+    build: ./
+    image: jsonlenium/infrastructure/mock-server
+    container_name: jsonlenium-test-get-server
+    hostname: jsonlenium-test-get-server
+    ports:
+      - 13001:3000
+    command: node server.js
+    networks:
+      - jsonlenium-test-server
+
+networks:
+  jsonlenium-test-server:
+    external: true
